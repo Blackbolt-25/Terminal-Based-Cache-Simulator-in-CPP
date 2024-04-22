@@ -1,0 +1,15 @@
+To take as input:-
+
+1.)Main Memory Capacity (in Kb)
+2.)Cache Memory Capacity (in Kb)
+3.)Block Size (in Kb)
+4.)Technique to be used (Direct Mapping , Fully Associative or Set Associative)
+5.)n- Cache Address (in Decimal Format)
+
+
+To give as output:-
+1.)The Binary format of the Memory addresses.
+2.)Cache Hit or Miss for each Memory Address
+3.)Show the corresponding update on the cache memory block
+4.)Not necessary to implement a GUI.
+
