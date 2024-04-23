@@ -28,14 +28,14 @@ class Cache{
   public:
     Cache(int M_M_S,int C_C_M,int B_S):Main_Memory_Size(M_M_S),Capacity_Cache_Memory(C_C_M),Block_Size(B_S),hits(0),misses(0){
       int bit_block_size = log2(Block_Size);
-      int bit_index = log2(Capacity_Cache_Memory)/log2(Block_Size);
+      int bit_index = log2(Capacity_Cache_Memory)-log2(Block_Size);
       int bit_tag = log2(Main_Memory_Size) - bit_block_size - bit_index;
       init(bit_tag,bit_block_size);
     } //Constructor to give all the variables their values.
 
     void init(int tag_bits,int block_bits)
     {
-      int rows = pow(2,log2(Capacity_Cache_Memory)/log2(Block_Size));
+      int rows = pow(2,log2(Capacity_Cache_Memory)-log2(Block_Size));
       string temp_tag = "_";
       for(int i=1;i<tag_bits;i++)
         temp_tag= temp_tag + "_";
@@ -66,7 +66,7 @@ class Cache{
       string binary_addr = to_binary(addr,log2(Main_Memory_Size));
       current_addr = binary_addr;
       int bit_block_size = log2(Block_Size);
-      int bit_index = log2(Capacity_Cache_Memory)/log2(Block_Size);
+      int bit_index = log2(Capacity_Cache_Memory)-log2(Block_Size);
       int bit_tag = log2(Capacity_Cache_Memory) - bit_block_size - bit_index;
 
       string word = binary_addr.substr(binary_addr.size() - bit_block_size);
@@ -105,18 +105,18 @@ class Cache{
     void printStats()
     {
       cout<<"Cache Table:-\n\n";
-      cout << setw(61) << setfill('-') << "" << "\n";
+      cout << setw(81) << setfill('-') << "" << "\n";
       cout << setfill(' ');
       cout<<"|"<<setw(10)<<setfill(' ')<<"Index"<<setw(10)<<"|"<<setw(10)<<setfill(' ')<<"Valid Bit"<<setw(10)<<"|"<<setw(10)<<setfill(' ')<<"Tag"<<setw(10)<<setfill(' ')<<"|"<<setw(10)<<setfill(' ')<<"Word"<<setw(10)<<"|"<<endl;
-      cout << setw(61) << setfill('-') << "" << "\n";
+      cout << setw(81) << setfill('-') << "" << "\n";
       cout << setfill(' ');
       int block_bit = log2(Block_Size);
-      int binary_bits = log2(Capacity_Cache_Memory)/log2(Block_Size);
+      int binary_bits = log2(Capacity_Cache_Memory)-log2(Block_Size);
       int tag_bits = log2(Main_Memory_Size) - block_bit - binary_bits;
-      for(int i=0;i<pow(2,log2(Capacity_Cache_Memory)/log2(Block_Size));i++)
+      for(int i=0;i<pow(2,log2(Capacity_Cache_Memory)-log2(Block_Size));i++)
         cout<<"|"<<setw(10)<<setfill(' ')<<i<<setw(10)<<"|"<<setw(10)<<setfill(' ')<<Cache_table[to_binary(i,binary_bits)].valid_bit<<setw(10)<<"|"<<setw(10)<<setfill(' ')<<Cache_table[to_binary(i,binary_bits)].tag<<setw(10)<<setfill(' ')<<"|"<<setw(10)<<setfill(' ')<<Cache_table[to_binary(i,binary_bits)].block_word<<setw(10)<<"|"<<endl;
 
-      cout << setw(61) << setfill('-') << "" << "\n";
+      cout << setw(81) << setfill('-') << "" << "\n";
       cout << setfill(' ');
 
       cout<<"\n\n";
@@ -135,18 +135,18 @@ class Cache{
       cout << setfill(' ');
 
       cout<<"New Cache Table:-\n\n";
-      cout << setw(61) << setfill('-') << "" << "\n";
+      cout << setw(81) << setfill('-') << "" << "\n";
       cout << setfill(' ');
       cout<<"|"<<setw(10)<<setfill(' ')<<"Index"<<setw(10)<<"|"<<setw(10)<<setfill(' ')<<"Valid Bit"<<setw(10)<<"|"<<setw(10)<<setfill(' ')<<"Tag"<<setw(10)<<setfill(' ')<<"|"<<setw(10)<<setfill(' ')<<"Word"<<setw(10)<<"|"<<endl;
       int block_bit = log2(Block_Size);
-      int binary_bits = log2(Capacity_Cache_Memory)/log2(Block_Size);
+      int binary_bits = log2(Capacity_Cache_Memory)-log2(Block_Size);
       int tag_bits = log2(Main_Memory_Size) - block_bit - binary_bits;
-      cout << setw(61) << setfill('-') << "" << "\n";
+      cout << setw(81) << setfill('-') << "" << "\n";
       cout << setfill(' ');
-      for(int i=0;i<pow(2,log2(Capacity_Cache_Memory)/log2(Block_Size));i++)
+      for(int i=0;i<pow(2,log2(Capacity_Cache_Memory)-log2(Block_Size));i++)
         cout<<"|"<<setw(10)<<setfill(' ')<<i<<setw(10)<<"|"<<setw(10)<<setfill(' ')<<Cache_table[to_binary(i,binary_bits)].valid_bit<<setw(10)<<"|"<<setw(10)<<setfill(' ')<<Cache_table[to_binary(i,binary_bits)].tag<<setw(10)<<setfill(' ')<<"|"<<setw(10)<<setfill(' ')<<Cache_table[to_binary(i,binary_bits)].block_word<<setw(10)<<"|"<<endl;
 
-      cout << setw(61) << setfill('-') << "" << "\n";
+      cout << setw(81) << setfill('-') << "" << "\n";
       cout << setfill(' ');
       
       if(check == 1)
