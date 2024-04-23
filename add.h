@@ -157,7 +157,7 @@ class Cache{
         cout<<"Cache Miss\n"<<"Line of Index = "<<index<<" found but Tag:- "<<tag<<" does not match\n\n";
 
       cout<<"Total Hit rate:- Total Miss rate:-\n";
-      cout<<((float)(hits)/(float)(hits + misses))*100<<"%\t"<<((float)(misses)/(float)(hits + misses))*100<<"\n";
+      cout<<((float)(hits)/(float)(hits + misses))*100<<"%\t\t\t"<<((float)(misses)/(float)(hits + misses))*100<<"%"<<"\n";
     }
 };
 
