@@ -20,10 +20,11 @@ int main()
   int temp;
   cout<<"Enter the no.of Memory Addresses to check:- ";
   cin>>temp;
+  int addr;
   for(int i=0;i<temp;i++)
   {
     cout<<"Enter the Memroy Address (in Decimal):- ";
-    cin>>temp; 
-    a1.accessMemory(temp);
+    cin>>addr; 
+    a1.accessMemory(addr);
   }
 }
